@@ -6,7 +6,7 @@ module.exports = merge(require('./webpack.base'), {
     contentBase: path.join(__dirname, 'public'),
     port: 8000,
     compress: true,
-    open: true,
+    open: false,
     hot: true,
     // publicPath: '/assets/',
   },
