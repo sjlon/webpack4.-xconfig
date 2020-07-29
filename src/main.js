@@ -1,3 +1,6 @@
-console.log('main模块')
+// import $ from 'jquery'
+// $(function () {
+//   console.log('main引入的jquery')
+// })
 
-module.exports = { name: 'main.js' }
+console.log('main模块')

@@ -5,10 +5,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
   entry: {
     index: './src/index.js',
-    // main: './src/main.js',
+    main: './src/main.js',
   },
   output: {
-    filename: '[name].js',
+    filename: '[name].bundle.js',
     // publicPath: 'assets',
     path: path.resolve(__dirname, 'dist'),
   },

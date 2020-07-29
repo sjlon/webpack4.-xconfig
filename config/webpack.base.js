@@ -3,15 +3,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // css 提取到单独的文件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
-  entry: {
-    index: './src/index.js',
-  },
+  entry: './src/index.js',
+  // main: './src/main.js',
+  // entry: {
+  //   index: './src/index.js',
+  //   // main: './src/main.js',
+  // },
   output: {
-    filename: '[name].js',
-    // publicPath: 'assets',
+    filename: '[name].bundle.js',
+    publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
   },
-
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',
+  //   },
+  // },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
