@@ -4,7 +4,7 @@ module.exports = merge(require('./webpack.base'), {
   mode: 'development',
   devServer: {
     contentBase: path.join(__dirname, 'public'),
-    port: 8000,
+    port: 8001,
     compress: true,
     open: false,
     hot: true,

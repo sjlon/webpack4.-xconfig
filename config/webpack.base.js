@@ -3,6 +3,8 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // css 提取到单独的文件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
   entry: './src/index.js',
   // main: './src/main.js',
@@ -14,6 +16,12 @@ module.exports = {
     filename: '[name].bundle.js',
     publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
+  },
+  resolve: {
+    extensions: ['.vue', '.js', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
+    },
   },
   optimization: {
     splitChunks: {
@@ -33,6 +41,7 @@ module.exports = {
           //自定义缓存组名
           test: /[\\/]node_modules[\\/]/, // 检查node_modules目录，只要模块在该目录下就是用上面配置拆分这个组
           priority: -10, // 权重-10，决定哪个组优先配置，
+          filename: 'vendors.js',
         },
         default: {
           // 默认缓存组名
@@ -44,6 +53,7 @@ module.exports = {
     },
   },
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.IgnorePlugin(/\.\/locale/, /moment/),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -57,6 +67,10 @@ module.exports = {
   module: {
     noParse: /jquery|lodash/,
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
       {
         test: /\.css$/,
         use: [

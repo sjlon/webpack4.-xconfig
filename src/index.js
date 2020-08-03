@@ -1,8 +1,8 @@
 // import $ from 'jquery'
 // import _ from 'lodash'
-import moment from 'moment'
-import 'moment/locale/zh-cn'
-moment.locale('zh-cn')
+// import moment from 'moment'
+// import 'moment/locale/zh-cn'
+// moment.locale('zh-cn')
 
 // console.log(moment().subtract(1, 'days').calendar())
 // window.onload = function () {
@@ -24,3 +24,20 @@ moment.locale('zh-cn')
 //     $('<h1></h1>').html('静态导入').appendTo('body')
 //   }
 // }
+
+import Vue from 'vue'
+import App from './views/App.vue'
+import router from './router'
+Vue.config.productionTip = false
+new Vue({
+  router,
+  data: {
+    msg: 'hello world!',
+  },
+  methods: {
+    cl() {
+      console.log(this.msg)
+    },
+  },
+  render: h => h(App),
+}).$mount('#app')
