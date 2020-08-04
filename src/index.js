@@ -36,7 +36,7 @@ new Vue({
   },
   methods: {
     cl() {
-      console.log(this.msg)
+      console.log(this.msg, 11111111111111111111111111111)
     },
   },
   render: h => h(App),

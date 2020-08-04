@@ -7,12 +7,12 @@ const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const path = require('path')
 module.exports = merge(require('./webpack.base'), {
-  mode: 'production',
+  mode: 'development',
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(), // 使用dllPlugin不能使用该插件
     new CopyWebpackPlugin({
       patterns: [
         {

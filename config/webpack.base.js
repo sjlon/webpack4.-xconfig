@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // css 提取到单独的文件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -53,12 +54,18 @@ module.exports = {
     },
   },
   plugins: [
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, '../dist/manifest.json'),
+    }),
     new VueLoaderPlugin(),
     new webpack.IgnorePlugin(/\.\/locale/, /moment/),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './public/index.html',
       title: 'webpck basic',
+    }),
+    new AddAssetHtmlWebpackPlugin({
+      filepath: path.resolve(__dirname, '../dist/vue_dll.js'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
